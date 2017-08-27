@@ -4,6 +4,6 @@ module.exports = mongoose.model('User', {
 	name : String,
 	activities : Object,
 	oauth_key : String,
-	email : String,
+	email : {type : String, unique : true},
 	phone_number : String
 });

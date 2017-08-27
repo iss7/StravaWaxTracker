@@ -77,15 +77,32 @@ module.exports = function(app) {
         passport.authenticate('strava'));
 
     app.get('/auth/strava/callback',
-        passport.authenticate('strava', { failureRedirect: '/' }),
+        passport.authenticate('strava', { failureRedirect: '/login' }),
         function(req, res) {
             // Successful authentication, redirect home.
             res.redirect('/');
         }
     );
 
+    app.get('/login', function(req, res) {
+        if (req.user) {
+            res.redirect('/');
+        }
+        else {
+            res.render('login.html')
+        }
+    });
+
     // application -------------------------------------------------------------
     app.get('*', function(req, res) {
-        res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+        User.find({}, function(err, users) {
+            console.log(users);
+        });
+        if (req.user) {
+            res.sendfile('./public/home.html'); // load the single view file (angular will handle the page changes on the front-end)
+        }
+        else {
+            res.redirect('/login');
+        }
     });
 };
