@@ -1,0 +1,16 @@
+{
+  "name": "StravaWaxTracker",
+  "version": "0.0.0",
+  "description": "Tells you when to wax your skis, based on strava activities.",
+  "main": "server.js",
+  "author": "Isabel Sharp, Adam Mahar",
+  "dependencies": {
+    "body-parser": "~1.5.2",
+    "dotenv": "^4.0.0",
+    "express": "~4.7.2",
+    "method-override": "~2.1.2",
+    "mongoose": "~3.6.2",
+    "morgan": "~1.2.2",
+    "passport": "^0.4.0"
+  }
+}
